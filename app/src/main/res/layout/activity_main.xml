@@ -1,53 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.cjj.PerseiLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/persei"
     >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="备忘录"
+        android:textSize="23sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:background="#578a68"
+        android:gravity="center"
+        />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:layout_weight="1">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="备忘录"
-            android:textSize="23sp"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp"
-            android:background="#9ae278"
-            android:gravity="center"
-            />
-
-        <LinearLayout
+        <ListView
+            android:id="@+id/list_view"
+            android:backgroundTint="#84dbd5a4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ListView
-                android:id="@+id/list_view"
-                android:backgroundTint="#84dbd5a4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="#ffff">
-            </ListView>
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/edit_note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:background="#6262e7"
-            android:text="添加备忘录"
-            android:textSize="20sp"
-            />
+            android:layout_margin="5dp"
+            android:background="#ffff">
+        </ListView>
 
     </LinearLayout>
-</com.cjj.PerseiLayout>
+
+    <Button
+        android:id="@+id/edit_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:background="#6262e7"
+        android:text="添加备忘录"
+        android:textSize="20sp"
+        />
+
+</LinearLayout>
