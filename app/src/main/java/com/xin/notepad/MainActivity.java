@@ -5,13 +5,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.AbsListView;
@@ -29,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements AbsListView.OnScr
 
     private static final String TAG = "MainActivity";
     private Context mContext;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView navView;
     private ListView listView;
     private ArrayAdapter<String> arrayAdapter;
     private List<String> dataList;
@@ -42,6 +48,23 @@ public class MainActivity extends AppCompatActivity implements AbsListView.OnScr
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        navView = findViewById(R.id.nav_view);
+        navView.setCheckedItem(R.id.nav_call);
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_exit:
+                        //sign_out forced
+                        break;
+                    default:
+                        mDrawerLayout.closeDrawers();
+
+                }
+                return true;
+            }
+        });
 
         listView = findViewById(R.id.list_view);
         dataList = new ArrayList<>();
