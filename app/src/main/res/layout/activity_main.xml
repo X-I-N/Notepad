@@ -11,9 +11,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#039BE5"
+        android:background="#FFA000"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popoupTheme="@style/ThemeOverlay.AppCompat.Light"
         >
     </android.support.v7.widget.Toolbar>
 
@@ -35,5 +34,14 @@
 
     </LinearLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_note_add_white_18dp"
+        android:elevation="8dp"
+        />
 
 </LinearLayout>
