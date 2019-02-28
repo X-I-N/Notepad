@@ -7,7 +7,10 @@ import android.database.sqlite.SQLiteStatement;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,8 +20,6 @@ import android.widget.EditText;
 public class NoteEdit extends AppCompatActivity {
 
     private EditText et_content;
-    private Button btn_ok;
-    private Button btn_cancel;
     private NoteDB noteDB;
     private SQLiteDatabase dbreader;
     public static int ENTER_STATE = 0;
@@ -28,11 +29,9 @@ public class NoteEdit extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBar actionBar = getSupportActionBar();
         setContentView(R.layout.edit_page);
-        if (actionBar != null) {
-            actionBar.hide();
-        }
+        Toolbar toolbar = findViewById(R.id.tool_bar1);
+        setSupportActionBar(toolbar);
 
         et_content = findViewById(R.id.et_content);
         getWindow().setSoftInputMode(
@@ -45,10 +44,17 @@ public class NoteEdit extends AppCompatActivity {
         Log.d("LAST_CONTENT", last_content);
         et_content.setText(last_content);
 
-        btn_ok = findViewById(R.id.btn_ok);
-        btn_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.editfile,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.save:
                 String content = et_content.getText().toString();
                 String sql_count = "SELECT COUNT(*) FROM note";
                 SQLiteStatement statement = dbreader.compileStatement(sql_count);
@@ -76,15 +82,10 @@ public class NoteEdit extends AppCompatActivity {
                 Intent data = new Intent();
                 setResult(RESULT_OK, data);
                 finish();
-            }
-        });
-        btn_cancel = findViewById(R.id.btn_cancel);
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+                break;
+            default:
+        }
+        return true;
     }
 
     @Override

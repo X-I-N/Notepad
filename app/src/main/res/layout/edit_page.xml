@@ -1,40 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="#FFA000"
-        android:orientation="horizontal">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        >
 
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#FFA000"
-            android:text="取消" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="编辑备忘录"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btn_ok"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
-            android:text="保存"
-            android:background="#FFA000"
-            />
-    </LinearLayout>
+    </android.support.v7.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -61,4 +43,3 @@
 
 </LinearLayout>
 
-<!--学习MaterialDesign优化UI体验-->
